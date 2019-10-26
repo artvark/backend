@@ -2,4 +2,4 @@
 .DS_Store
 /keys
 .env
-/test_art
+/routes/uploads

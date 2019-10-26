@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { addUserFirebase, addUserCosmos } from '../services/users/CreateUser';
+import { addUserFirebase, addUserCosmos } from '../services/users/AddUser';
 //import {checkIfAuthenticated} from '../services/authentication/CheckAuthorization';
 
 let router = Router();
