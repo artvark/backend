@@ -11,8 +11,14 @@ import { blobService } from './services/StorageConnect';
 import users from './routes/Users';
 app.use("/users", users);
 
+import art from './routes/Art';
+app.use("/art", art);
+
 app.get('/', (req, res) => res.send('Hello World!'));
 
 // Setting port to be set by env var, for Heroku
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App listening on port ${port}!`));
+
+// import { generatePoints } from './services/locations/GetArtByLocations';
+// generatePoints()
