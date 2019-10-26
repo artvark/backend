@@ -8,8 +8,8 @@ import models from './services/MongoConnect'
 import { blobService } from './services/StorageConnect';
 
 // === Top Level Route Declarations ===
-// import users from './routes/Users';
-// app.use("/users", users);
+import users from './routes/Users';
+app.use("/users", users);
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
