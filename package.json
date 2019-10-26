@@ -24,6 +24,8 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "mongoose": "^5.7.7"
+    "firebase-admin": "^8.6.1",
+    "mongoose": "^5.7.7",
+    "mongoose-unique-validator": "^2.0.3"
   }
 }
