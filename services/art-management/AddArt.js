@@ -46,7 +46,6 @@ const addArt = (req, res, next) => {
                 });
                 next(null, id)
             })
-            
         
         },
         (blobRef, next) => {
