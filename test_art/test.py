@@ -8,7 +8,7 @@ url = "http://localhost:3000/art-management/art"
 
 
 
-for i in range(0, 100):
+for i in range(0, 2):
     lat = 33.777156
     lng = -84.396202
 
