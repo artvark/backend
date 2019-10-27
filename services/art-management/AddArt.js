@@ -1,8 +1,7 @@
 import models from "../MongoConnect"
 import async from "async"
-import { blobService } from "../StorageConnect"
+import { azure, uploadStream, getContainerURL } from "../StorageConnect"
 import mongoose from 'mongoose';
-import fs from 'fs';
 
 const addArt = (req, res, next) => {
 
@@ -15,23 +14,35 @@ const addArt = (req, res, next) => {
     // console.log(req.file)
     // console.log(req.body)
 
+    var r = 200/111300 // = 100 meters
+    var y0 = Number(lat)
+    var x0 = Number(lng)
+
+    var u = Math.random()
+    var v = Math.random()
+    var w = r * Math.sqrt(u)
+    var t = 2 * Math.PI * v
+    var x = w * Math.cos(t)
+    var y1 = w * Math.sin(t)
+    var x1 = x / Math.cos(y0)
+    var newY = y0 + y1
+    var newX = x0 + x1
+
+    lng = newX
+    lat = newY
+
     async.waterfall([
         (next) => {
             var id = new mongoose.Types.ObjectId();
-            blobService.createBlockBlobFromLocalFile('artwork', String(id), req.file.path, function(error, result, response) {
-                if (!error) {
-                    console.log("Uploaded")
-
-                    fs.unlink(req.file.path, (err) => {
-                        if (err) throw err;
-                        next(null, id)
-                    });
-                }
-        
-                if (error) {
-                    console.log(error)
-                }
+            console.log(req.file.path)
+            
+            const aborter = azure.Aborter.timeout(30 * azure.ONE_MINUTE);
+            const containerURL = getContainerURL("artwork")
+            uploadStream(aborter, containerURL, req.file.path, id).then(() => {
+                next(null, id)
             })
+            
+        
         },
         (blobRef, next) => {
             var p = new models.Art({ 

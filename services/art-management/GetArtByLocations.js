@@ -24,5 +24,5 @@ const getArtbyLngLat = (req, res, next) => {
 
 }
 
-export {getArtbyLngLat}
+export { getArtbyLngLat }
 

@@ -2,4 +2,7 @@
 .DS_Store
 /keys
 .env
-/routes/uploads
+/services/art-management/uploads/*
+!services/art-management/uploads/.gitkeep
+/services/art-management/downloads/*
+!services/art-management/downloads/.gitkeep 
