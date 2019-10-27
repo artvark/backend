@@ -1,16 +1,5 @@
 import models from "./services/MongoConnect";
 
-// blobService.createBlockBlobFromLocalFile('artwork', 'artvark', 'artvark.png', function(error, result, response) {
-//     if (!error) {
-//         console.log("uploaded")
-//     }
-
-//     if (error) {
-//         console.log(error)
-//     }
-// });
-
-
 const generatePoints = () => {
     let lat = 33.777156
     let lng = -84.396202
